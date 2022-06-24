@@ -13,58 +13,76 @@ enum DIRECTION {
 }
 
 
-public class player : MonoBehaviour{
+public class Player : MonoBehaviour{
+    public GameObject player;
+    public GameObject playerLeftUp;
+    public GameObject playerLeftDown;
+    public GameObject playerRightUp;
+    public GameObject playerRightDown;
     //人物朝向
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
-    //人物位置
-    private Transform _transform;
-    //正面/背面
-    private string _type = "A";
-    //水平方向移动距离
-    public float xOffset;
-    //垂直方向移动距离
-    public float yOffset;
 
     //控制角色转向
-    void toLeftUp(){
+    void ToLeftUp(){
         _direction = DIRECTION.LEFT_UP;
-        _type = "B";
+        UpdatePlayer();
     }
-    void toLeftDown(){
+    void ToLeftDown(){
         _direction = DIRECTION.LEFT_DOWN;
-        _type = "A";
+        UpdatePlayer();
     }
-    void toRightUp(){
+    void ToRightUp(){
         _direction = DIRECTION.RIGHT_UP;
-        _type = "B";
+        UpdatePlayer();
     }
-    void toRightDown(){
+    void ToRightDown(){
         _direction = DIRECTION.RIGHT_DOWN;
-        _type = "A";
+        UpdatePlayer();
+    }
+
+    void UpdatePlayer(){
+        playerLeftUp.SetActive(false);
+        playerLeftDown.SetActive(false);
+        playerRightUp.SetActive(false);
+        playerRightDown.SetActive(false);
+        switch (_direction){
+            case DIRECTION.LEFT_UP:
+                playerLeftUp.SetActive(true);
+                break;
+            case DIRECTION.LEFT_DOWN:
+                playerLeftDown.SetActive(true);
+                break;
+            case DIRECTION.RIGHT_UP:
+                playerRightUp.SetActive(true);
+                break;
+            case DIRECTION.RIGHT_DOWN:
+                playerRightDown.SetActive(true);
+                break;
+        }
     }
 
     //控制角色沿当前方向移动
-    void move(){
+    void MovePlayer(float xOffset,float yOffset){
+        Transform _transform = GetComponent<Transform>();
         switch (_direction){
             case DIRECTION.LEFT_UP:
-                _transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y + yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y + yOffset,_transform.position.z));
                 break;
             case DIRECTION.LEFT_DOWN:
-                _transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y - yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y - yOffset,_transform.position.z));
                 break;
             case DIRECTION.RIGHT_UP:
-                _transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y + yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y + yOffset,_transform.position.z));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                _transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y - yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y - yOffset,_transform.position.z));
                 break;
         }
 
     }
 
     void Start(){
-        //初始化位置
-        _transform = GetComponent<Transform>();
+
     }
 
     // Update is called once per frame
