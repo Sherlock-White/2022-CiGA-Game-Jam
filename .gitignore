@@ -1,3 +1,8 @@
 /Library
 /Logs
 /UserSettings
+/Temp
+/obj
+.vsconfig
+2022-CiGA-Game-Jam.sln
+Assembly-CSharp.csproj
