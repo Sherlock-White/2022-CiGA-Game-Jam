@@ -14,32 +14,41 @@ enum DIRECTION {
 
 
 public class Player : MonoBehaviour{
+    //主角
     public GameObject player;
     public GameObject playerLeftUp;
     public GameObject playerLeftDown;
     public GameObject playerRightUp;
     public GameObject playerRightDown;
+    //方向控制键
+    public GameObject ctrlLeftUp;
+    public GameObject ctrlLeftDown;
+    public GameObject ctrlRightUp;
+    public GameObject ctrlRightDown;
+
     //人物朝向
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
 
     //控制角色转向
-    void ToLeftUp(){
+    public void ToLeftUp(){
+        Debug.Log("left");
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
-    void ToLeftDown(){
+    public void ToLeftDown(){
         _direction = DIRECTION.LEFT_DOWN;
         UpdatePlayer();
     }
-    void ToRightUp(){
+    public void ToRightUp(){
         _direction = DIRECTION.RIGHT_UP;
         UpdatePlayer();
     }
-    void ToRightDown(){
+    public void ToRightDown(){
         _direction = DIRECTION.RIGHT_DOWN;
         UpdatePlayer();
     }
 
+    //更新角色的朝向
     void UpdatePlayer(){
         playerLeftUp.SetActive(false);
         playerLeftDown.SetActive(false);
@@ -82,7 +91,7 @@ public class Player : MonoBehaviour{
     }
 
     void Start(){
-
+   
     }
 
     // Update is called once per frame
