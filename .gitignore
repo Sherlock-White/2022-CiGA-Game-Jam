@@ -7,3 +7,5 @@
 2022-CiGA-Game-Jam.sln
 Assembly-CSharp.csproj
 .vs
+.DS_Store
+.idea

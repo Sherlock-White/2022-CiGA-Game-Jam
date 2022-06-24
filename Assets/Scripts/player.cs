@@ -1,11 +1,8 @@
-using System.Numerics;
-using System.Globalization;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum DIRECTION {
+public enum DIRECTION {
     LEFT_UP = 0,    //↖
     LEFT_DOWN = 1,  //↙
     RIGHT_UP = 2,   //↗
@@ -20,19 +17,12 @@ public class Player : MonoBehaviour{
     public GameObject playerLeftDown;
     public GameObject playerRightUp;
     public GameObject playerRightDown;
-    //方向控制键
-    public GameObject ctrlLeftUp;
-    public GameObject ctrlLeftDown;
-    public GameObject ctrlRightUp;
-    public GameObject ctrlRightDown;
 
     //人物朝向
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
 
     //控制角色转向
     public void ToLeftUp(){
-        PolygonCollider2D collider = ctrlLeftUp.GetComponent<PolygonCollider2D>();
-        
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
@@ -80,16 +70,16 @@ public class Player : MonoBehaviour{
         switch (_direction)
         {
             case DIRECTION.LEFT_UP:
-                player.transform.Translate(new UnityEngine.Vector3(-xOffset,yOffset,0));
+                player.transform.Translate(new Vector3(-xOffset,yOffset,0));
                 break;
             case DIRECTION.LEFT_DOWN:
-                player.transform.Translate(new UnityEngine.Vector3(-xOffset,-yOffset,0));
+                player.transform.Translate(new Vector3(-xOffset,-yOffset,0));
                 break;
             case DIRECTION.RIGHT_UP:
-                player.transform.Translate(new UnityEngine.Vector3(xOffset,yOffset,0));
+                player.transform.Translate(new Vector3(xOffset,yOffset,0));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                player.transform.Translate(new UnityEngine.Vector3(xOffset,-yOffset,0));
+                player.transform.Translate(new Vector3(xOffset,-yOffset,0));
                 break;
         }
     }
