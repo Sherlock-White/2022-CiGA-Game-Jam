@@ -31,6 +31,8 @@ public class Player : MonoBehaviour{
 
     //控制角色转向
     public void ToLeftUp(){
+        PolygonCollider2D collider = ctrlLeftUp.GetComponent<PolygonCollider2D>();
+        
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
