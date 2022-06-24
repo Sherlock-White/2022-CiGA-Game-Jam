@@ -31,7 +31,6 @@ public class Player : MonoBehaviour{
 
     //控制角色转向
     public void ToLeftUp(){
-        Debug.Log("left");
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
@@ -70,24 +69,27 @@ public class Player : MonoBehaviour{
         }
     }
 
+    //暂时写死，之后根据配置来读取
+    private float xOffset = 1;
+    private float yOffset = 1;
+
     //控制角色沿当前方向移动
-    void MovePlayer(float xOffset,float yOffset){
-        Transform _transform = GetComponent<Transform>();
-        switch (_direction){
+    public void MovePlayer(){
+        switch (_direction)
+        {
             case DIRECTION.LEFT_UP:
-                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y + yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(-xOffset,yOffset,0));
                 break;
             case DIRECTION.LEFT_DOWN:
-                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x - xOffset,_transform.position.y - yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(-xOffset,-yOffset,0));
                 break;
             case DIRECTION.RIGHT_UP:
-                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y + yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(xOffset,yOffset,0));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                player.transform.Translate(new UnityEngine.Vector3(_transform.position.x + xOffset,_transform.position.y - yOffset,_transform.position.z));
+                player.transform.Translate(new UnityEngine.Vector3(xOffset,-yOffset,0));
                 break;
         }
-
     }
 
     void Start(){
