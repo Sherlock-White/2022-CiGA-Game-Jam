@@ -2,50 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DIRECTION {
-    LEFT_UP = 0,    //â†–
-    LEFT_DOWN = 1,  //â†™
-    RIGHT_UP = 2,   //â†—
-    RIGHT_DOWN = 3, //â†˜
+public enum DIRECTION
+{
+    LEFT_UP = 0,    //¨I
+    LEFT_DOWN = 1,  //¨L
+    RIGHT_UP = 2,   //¨J
+    RIGHT_DOWN = 3, //¨K
 }
 
 
-public class Player : MonoBehaviour{
-    //ä¸»è§’
+public class Player : MonoBehaviour
+{
+    //Ö÷½Ç
     public GameObject player;
     public GameObject playerLeftUp;
     public GameObject playerLeftDown;
     public GameObject playerRightUp;
     public GameObject playerRightDown;
 
-    //äººç‰©æœå‘
+    //ÈËÎï³¯Ïò
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
 
-    //æ§åˆ¶è§’è‰²è½¬å‘
-    public void ToLeftUp(){
+    //¿ØÖÆ½ÇÉ«×ªÏò
+    public void ToLeftUp()
+    {
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
-    public void ToLeftDown(){
+    public void ToLeftDown()
+    {
         _direction = DIRECTION.LEFT_DOWN;
         UpdatePlayer();
     }
-    public void ToRightUp(){
+    public void ToRightUp()
+    {
         _direction = DIRECTION.RIGHT_UP;
         UpdatePlayer();
     }
-    public void ToRightDown(){
+    public void ToRightDown()
+    {
         _direction = DIRECTION.RIGHT_DOWN;
         UpdatePlayer();
     }
 
-    //æ›´æ–°è§’è‰²çš„æœå‘
-    void UpdatePlayer(){
+    //¸üĞÂ½ÇÉ«µÄ³¯Ïò
+    void UpdatePlayer()
+    {
         playerLeftUp.SetActive(false);
         playerLeftDown.SetActive(false);
         playerRightUp.SetActive(false);
         playerRightDown.SetActive(false);
-        switch (_direction){
+        switch (_direction)
+        {
             case DIRECTION.LEFT_UP:
                 playerLeftUp.SetActive(true);
                 break;
@@ -61,35 +69,38 @@ public class Player : MonoBehaviour{
         }
     }
 
-    //æš‚æ—¶å†™æ­»ï¼Œä¹‹åæ ¹æ®é…ç½®æ¥è¯»å–
-    private float xOffset = 1;
-    private float yOffset = 1;
+    //ÔİÊ±Ğ´ËÀ£¬Ö®ºó¸ù¾İÅäÖÃÀ´¶ÁÈ¡
+    private float xOffset = (float)1.8;
+    private float yOffset = (float)0.955;
 
-    //æ§åˆ¶è§’è‰²æ²¿å½“å‰æ–¹å‘ç§»åŠ¨
-    public void MovePlayer(){
+    //¿ØÖÆ½ÇÉ«ÑØµ±Ç°·½ÏòÒÆ¶¯
+    public void MovePlayer()
+    {
         switch (_direction)
         {
             case DIRECTION.LEFT_UP:
-                player.transform.Translate(new Vector3(-xOffset,yOffset,0));
+                player.transform.Translate(new Vector3(-xOffset, yOffset, 0));
                 break;
             case DIRECTION.LEFT_DOWN:
-                player.transform.Translate(new Vector3(-xOffset,-yOffset,0));
+                player.transform.Translate(new Vector3(-xOffset, -yOffset, 0));
                 break;
             case DIRECTION.RIGHT_UP:
-                player.transform.Translate(new Vector3(xOffset,yOffset,0));
+                player.transform.Translate(new Vector3(xOffset, yOffset, 0));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                player.transform.Translate(new Vector3(xOffset,-yOffset,0));
+                player.transform.Translate(new Vector3(xOffset, -yOffset, 0));
                 break;
         }
     }
 
-    void Start(){
-   
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
-    void Update(){
-        
+    void Update()
+    {
+
     }
 }
