@@ -369,21 +369,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4494040256647013177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4494040256647013178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2e0946c43b4fc4298adea83d5373a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xOffset: 225
-  yOffset: 113
-  zOffset: 293
 --- !u!1 &4494040256647013178
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,9 +378,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4494040256647013176}
-  - component: {fileID: 4494040256647013177}
   - component: {fileID: 4494040256647013180}
   - component: {fileID: 4494040256647013179}
+  - component: {fileID: 4494040256647013181}
   m_Layer: 0
   m_Name: hero
   m_TagString: Untagged
@@ -473,6 +458,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4494040256647013181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494040256647013178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47f0c72d942e6e47b860a5a9b78fb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 225
+  yOffset: 113
+  zOffset: 0
 --- !u!222 &4494040257486109064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -555,8 +555,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: ToLeftDown
         m_Mode: 1
         m_Arguments:
@@ -567,8 +567,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:
@@ -872,8 +872,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: ToRightDown
         m_Mode: 1
         m_Arguments:
@@ -884,8 +884,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:
@@ -1053,8 +1053,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: ToLeftUp
         m_Mode: 1
         m_Arguments:
@@ -1065,8 +1065,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:
@@ -1233,8 +1233,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: ToRightUp
         m_Mode: 1
         m_Arguments:
@@ -1245,8 +1245,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013177}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 4494040256647013181}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:

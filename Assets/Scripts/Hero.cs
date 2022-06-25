@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,8 @@ public enum DIRECTION
 }
 
 
-public class Player : MonoBehaviour{
+public class Hero : MonoBehaviour
+{
     //主角动画机
     private Animator playerAnimator;
 
@@ -41,13 +42,14 @@ public class Player : MonoBehaviour{
     }
 
     //更新角色的朝向
-    void UpdatePlayer(){
+    void UpdatePlayer()
+    {
         playerAnimator.Play(_direction.ToString());
     }
 
     //��ʱд����֮�������������ȡ
-    public float xOffset;
-    public float yOffset;
+    public float xOffset = 225;
+    public float yOffset = 113;
     public float zOffset;
 
 
