@@ -29,28 +29,28 @@ public class Hero : MonoBehaviour
     {
         _direction = DIRECTION.LEFT_UP;
         playerAnimator.Play(_direction.ToString());
-        UpdateCurBoxId(_direction);
+        MovePlayer();
         UpdateDirBtn();
     }
     public void ToLeftDown()
     {
         _direction = DIRECTION.LEFT_DOWN;
         playerAnimator.Play(_direction.ToString());
-        UpdateCurBoxId(_direction);
+        MovePlayer();
         UpdateDirBtn();
     }
     public void ToRightUp()
     {
         _direction = DIRECTION.RIGHT_UP;
         playerAnimator.Play(_direction.ToString());
-        UpdateCurBoxId(_direction);
+        MovePlayer();
         UpdateDirBtn();
     }
     public void ToRightDown()
     {
         _direction = DIRECTION.RIGHT_DOWN;
         playerAnimator.Play(_direction.ToString());
-        UpdateCurBoxId(_direction);
+        MovePlayer();
         UpdateDirBtn();
     }
 
@@ -69,42 +69,35 @@ public class Hero : MonoBehaviour
         rightDown.SetActive(validMove[3] > 0);
     }
 
-    //更新当前所在的CurBoxId
-    public void UpdateCurBoxId(DIRECTION dir)
-    {
-        Map map = mapObj.GetComponent<Map>();
-        int[] validMove = map.FindValidMove(curBoxId);
-        curBoxId = validMove[(int)dir];
-    }
-
-    //之后根据配置更新///////////////
-    public float xOffset = 225;
-    public float yOffset = 113;
-    public float zOffset = 276;
+    //之后根据配置更新
+    //public float xOffset = 225;
+    //public float yOffset = 113;
+    //public float zOffset = 276;
 
     //角色移动
     public void MovePlayer()
     {
-        switch (_direction)
-        {
-            case DIRECTION.LEFT_UP:
-                gameObject.transform.Translate(new Vector3(-xOffset, yOffset, 0));
-                break;
-            case DIRECTION.LEFT_DOWN:
-                gameObject.transform.Translate(new Vector3(-xOffset, -yOffset, 0));
-                break;
-            case DIRECTION.RIGHT_UP:
-                gameObject.transform.Translate(new Vector3(xOffset, yOffset, 0));
-                break;
-            case DIRECTION.RIGHT_DOWN:
-                gameObject.transform.Translate(new Vector3(xOffset, -yOffset, 0));
-                break;
-        }
+        //更新当前所在的CurBoxId
+        Map map = mapObj.GetComponent<Map>();
+        int[] validMove = map.FindValidMove(curBoxId);
+        curBoxId = validMove[(int)_direction];
+
+        //获取到目标点的偏移量
+        float startX = gameObject.GetComponent<Transform>().position.x;
+        //把坐标与角色锚点之间的120px偏差手动消除
+        float startY = gameObject.GetComponent<Transform>().position.y - 120;
+        GameObject box = GameObject.Find("map/" + curBoxId);
+        float endX = box.GetComponent<Transform>().position.x;
+        float endY = box.GetComponent<Transform>().position.y;
+        float offsetX = endX - startX;
+        float offsetY = endY - startY;
+        gameObject.transform.Translate(new Vector3(offsetX, offsetY, 0));
     }
 
     void Start()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
+        UpdateDirBtn();
     }
 
     // Update is called once per frame

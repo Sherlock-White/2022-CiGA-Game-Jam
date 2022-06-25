@@ -73,8 +73,6 @@ public class Map : MonoBehaviour
     
     void Start()
     {
-        //根据moveMap判断当前能移动的方向，对方向键的显示进行控制
-        //点击触发移动后，更新当前BoxId，刷新对方向键的显示控制
     }
 
     void Update()

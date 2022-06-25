@@ -1449,18 +1449,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013181}
-        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
-        m_MethodName: MovePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &4494040257486109067
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1766,18 +1754,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013181}
-        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
-        m_MethodName: MovePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &4494040257977027925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1947,18 +1923,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4494040256647013181}
-        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
-        m_MethodName: MovePlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &4494040258290550670
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2118,18 +2082,6 @@ MonoBehaviour:
       - m_Target: {fileID: 4494040256647013181}
         m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: ToRightUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4494040256647013181}
-        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
-        m_MethodName: MovePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
