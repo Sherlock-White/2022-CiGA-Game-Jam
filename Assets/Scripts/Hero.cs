@@ -54,6 +54,39 @@ public class Hero : MonoBehaviour
         UpdateDirBtn();
     }
 
+    //刷新角色的图层，在middleground与foreg之间修改
+    public void UpdatePlayerLayer()
+    {
+        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        GameObject buttons = GameObject.Find("map/hero/Buttons");
+        Canvas canvas = buttons.GetComponent<Canvas>();
+        int[] list = {4,10,11,13,14,18,23,24,25,31,36,38,48,49};
+        bool isContained = false;
+        foreach(var item in list)
+        {
+            if(item == curBoxId)
+            {
+                isContained = true;
+                break;
+            }
+        }
+        if(isContained)
+        {
+            spriteRenderer.sortingLayerName = "foreground1";
+            canvas.sortingLayerName = "foreground1";
+        }
+        else
+        {
+            spriteRenderer.sortingLayerName = "middleground";
+            canvas.sortingLayerName = "middleground";
+        }
+
+        if(curBoxId == 23)
+        {
+
+        }
+    }
+
     //刷新方向键的显示,只有从地图的下一有效路径中获得的值为正才显示；否则隐藏
     public void UpdateDirBtn()
     {
@@ -77,11 +110,13 @@ public class Hero : MonoBehaviour
         int[] validMove = map.FindValidMove(curBoxId);
         curBoxId = validMove[(int)_direction];
 
+        UpdatePlayerLayer();
+
         //获取到目标点的偏移量
         float startX = gameObject.GetComponent<Transform>().position.x;
-        //把坐标与角色锚点之间的120px偏差手动消除
-        float startY = gameObject.GetComponent<Transform>().position.y - 120;
-        GameObject box = GameObject.Find("map/" + curBoxId);
+        //把坐标与角色锚点之间的110px偏差手动消除
+        float startY = gameObject.GetComponent<Transform>().position.y - 110;
+        GameObject box = GameObject.Find("map/node/" + curBoxId);
         float endX = box.GetComponent<Transform>().position.x;
         float endY = box.GetComponent<Transform>().position.y;
         float offsetX = endX - startX;
