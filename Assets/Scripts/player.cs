@@ -46,9 +46,9 @@ public class Player : MonoBehaviour{
     }
 
     //��ʱд����֮�������������ȡ
-    private float xOffset = (float)230;
-    private float yOffset = (float)120;
-    private float zOffset = (float)293;
+    public float xOffset;
+    public float yOffset;
+    public float zOffset;
 
 
 
