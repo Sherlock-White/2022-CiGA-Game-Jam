@@ -70,8 +70,11 @@ public class Player : MonoBehaviour
     }
 
     //暂时写死，之后根据配置来读取
-    private float xOffset = (float)1.8;
-    private float yOffset = (float)0.955;
+    private float xOffset = (float)230;
+    private float yOffset = (float)120;
+    private float zOffset = (float)293;
+
+
 
     //控制角色沿当前方向移动
     public void MovePlayer()
