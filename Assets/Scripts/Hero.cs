@@ -20,7 +20,7 @@ public class Hero : MonoBehaviour
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
 
     //当前主角所在坐标，从1到49，会比map中的数组索引大1
-    private int curBoxId = 36;
+    private int curBoxId = 43;
 
     public GameObject mapObj;
 
@@ -68,11 +68,6 @@ public class Hero : MonoBehaviour
         rightUp.SetActive(validMove[2] > 0);
         rightDown.SetActive(validMove[3] > 0);
     }
-
-    //之后根据配置更新
-    //public float xOffset = 225;
-    //public float yOffset = 113;
-    //public float zOffset = 276;
 
     //角色移动
     public void MovePlayer()
