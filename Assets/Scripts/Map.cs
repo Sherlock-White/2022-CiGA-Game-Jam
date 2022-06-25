@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,7 +59,7 @@ public class Map : MonoBehaviour
         {48,-1,42,-1},  //49
     };
 
-    //»ñÈ¡curBoxIdÏÂ¿ÉÐÐµÄÇé¿ö
+    //ï¿½ï¿½È¡curBoxIdï¿½Â¿ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½
     public int[] FindValidMove(int curBoxId)
     {
         int[] row = new int[4];

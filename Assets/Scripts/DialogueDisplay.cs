@@ -3,6 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class Date
+{
+    public int yearOffset;
+    public int monthOffset;
+    public Date(int yearOffset, int monthOffset)
+    {
+        this.yearOffset = yearOffset;
+        this.monthOffset = monthOffset;
+    }
+
+    public string getDate(int turn)
+    {
+        int y = yearOffset = turn / 2;
+        int m = monthOffset;
+        if (turn % 2 == 1)
+        {
+            if (monthOffset == 6)
+            {
+                monthOffset = 12;
+            }
+            else
+            {
+                monthOffset = 6;
+                yearOffset += 1;
+            }
+        }
+
+        return $"{y}.{m}";
+    }
+}
+
 public class Dialogue
 {
     public string playerTxt;
