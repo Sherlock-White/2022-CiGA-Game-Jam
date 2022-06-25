@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DIRECTION {
-    LEFT_UP = 0,    //↖
-    LEFT_DOWN = 1,  //↙
-    RIGHT_UP = 2,   //↗
-    RIGHT_DOWN = 3, //↘
+public enum DIRECTION
+{
+    LEFT_UP = 0,    //�I
+    LEFT_DOWN = 1,  //�L
+    RIGHT_UP = 2,   //�J
+    RIGHT_DOWN = 3, //�K
 }
 
 
@@ -14,23 +15,27 @@ public class Player : MonoBehaviour{
     //主角动画机
     private Animator playerAnimator;
 
-    //人物朝向
+    //���ﳯ��
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
 
-    //控制角色转向
-    public void ToLeftUp(){
+    //���ƽ�ɫת��
+    public void ToLeftUp()
+    {
         _direction = DIRECTION.LEFT_UP;
         UpdatePlayer();
     }
-    public void ToLeftDown(){
+    public void ToLeftDown()
+    {
         _direction = DIRECTION.LEFT_DOWN;
         UpdatePlayer();
     }
-    public void ToRightUp(){
+    public void ToRightUp()
+    {
         _direction = DIRECTION.RIGHT_UP;
         UpdatePlayer();
     }
-    public void ToRightDown(){
+    public void ToRightDown()
+    {
         _direction = DIRECTION.RIGHT_DOWN;
         UpdatePlayer();
     }
@@ -40,25 +45,29 @@ public class Player : MonoBehaviour{
         playerAnimator.Play(_direction.ToString());
     }
 
-    //暂时写死，之后根据配置来读取
-    private float xOffset = 1;
-    private float yOffset = 1;
+    //��ʱд����֮�������������ȡ
+    private float xOffset = (float)230;
+    private float yOffset = (float)120;
+    private float zOffset = (float)293;
 
-    //控制角色沿当前方向移动
-    public void MovePlayer(){
+
+
+    //���ƽ�ɫ�ص�ǰ�����ƶ�
+    public void MovePlayer()
+    {
         switch (_direction)
         {
             case DIRECTION.LEFT_UP:
-                gameObject.transform.Translate(new Vector3(-xOffset,yOffset,0));
+                gameObject.transform.Translate(new Vector3(-xOffset, yOffset, 0));
                 break;
             case DIRECTION.LEFT_DOWN:
-                gameObject.transform.Translate(new Vector3(-xOffset,-yOffset,0));
+                gameObject.transform.Translate(new Vector3(-xOffset, -yOffset, 0));
                 break;
             case DIRECTION.RIGHT_UP:
-                gameObject.transform.Translate(new Vector3(xOffset,yOffset,0));
+                gameObject.transform.Translate(new Vector3(xOffset, yOffset, 0));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                gameObject.transform.Translate(new Vector3(xOffset,-yOffset,0));
+                gameObject.transform.Translate(new Vector3(xOffset, -yOffset, 0));
                 break;
         }
     }
@@ -69,7 +78,8 @@ public class Player : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
-        
+    void Update()
+    {
+
     }
 }
