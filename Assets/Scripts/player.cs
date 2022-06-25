@@ -11,12 +11,8 @@ public enum DIRECTION {
 
 
 public class Player : MonoBehaviour{
-    //主角
-    public GameObject player;
-    public GameObject playerLeftUp;
-    public GameObject playerLeftDown;
-    public GameObject playerRightUp;
-    public GameObject playerRightDown;
+    //主角动画机
+    private Animator playerAnimator;
 
     //人物朝向
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
@@ -41,24 +37,7 @@ public class Player : MonoBehaviour{
 
     //更新角色的朝向
     void UpdatePlayer(){
-        playerLeftUp.SetActive(false);
-        playerLeftDown.SetActive(false);
-        playerRightUp.SetActive(false);
-        playerRightDown.SetActive(false);
-        switch (_direction){
-            case DIRECTION.LEFT_UP:
-                playerLeftUp.SetActive(true);
-                break;
-            case DIRECTION.LEFT_DOWN:
-                playerLeftDown.SetActive(true);
-                break;
-            case DIRECTION.RIGHT_UP:
-                playerRightUp.SetActive(true);
-                break;
-            case DIRECTION.RIGHT_DOWN:
-                playerRightDown.SetActive(true);
-                break;
-        }
+        playerAnimator.Play(_direction.ToString());
     }
 
     //暂时写死，之后根据配置来读取
@@ -70,22 +49,23 @@ public class Player : MonoBehaviour{
         switch (_direction)
         {
             case DIRECTION.LEFT_UP:
-                player.transform.Translate(new Vector3(-xOffset,yOffset,0));
+                gameObject.transform.Translate(new Vector3(-xOffset,yOffset,0));
                 break;
             case DIRECTION.LEFT_DOWN:
-                player.transform.Translate(new Vector3(-xOffset,-yOffset,0));
+                gameObject.transform.Translate(new Vector3(-xOffset,-yOffset,0));
                 break;
             case DIRECTION.RIGHT_UP:
-                player.transform.Translate(new Vector3(xOffset,yOffset,0));
+                gameObject.transform.Translate(new Vector3(xOffset,yOffset,0));
                 break;
             case DIRECTION.RIGHT_DOWN:
-                player.transform.Translate(new Vector3(xOffset,-yOffset,0));
+                gameObject.transform.Translate(new Vector3(xOffset,-yOffset,0));
                 break;
         }
     }
 
-    void Start(){
-   
+    void Start()
+    {
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
