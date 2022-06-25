@@ -81,7 +81,7 @@ public class Hero : MonoBehaviour
         float startX = gameObject.GetComponent<Transform>().position.x;
         //把坐标与角色锚点之间的120px偏差手动消除
         float startY = gameObject.GetComponent<Transform>().position.y - 120;
-        GameObject box = GameObject.Find("map/" + curBoxId);
+        GameObject box = GameObject.Find("map/node/" + curBoxId);
         float endX = box.GetComponent<Transform>().position.x;
         float endY = box.GetComponent<Transform>().position.y;
         float offsetX = endX - startX;
