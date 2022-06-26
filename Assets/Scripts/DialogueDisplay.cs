@@ -1,7 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// This entire class is poorly named, but I do not have time to rename this
+/// Right now it manages all text and date interactions
+/// </summary>
+
+public class Date
+{
+    public int yearOffset;
+    public int monthOffset;
+    public Date(int yearOffset, int monthOffset)
+    {
+        this.yearOffset = yearOffset;
+        this.monthOffset = monthOffset;
+    }
+
+    public string getDate(int turn)
+    {
+        int monthsPassed = monthOffset + turn * 6;
+        int y = yearOffset + monthsPassed / 12;
+        int m = monthOffset + monthsPassed % 12;
+        return $"{y}.{m}";
+    }
+}
 
 public class Dialogue
 {
@@ -21,21 +48,62 @@ public class Dialogue
 
 public class DialogueDisplay : MonoBehaviour
 {
-    public GameObject playerChat;
-    public Text playerText;
-    public GameObject motherChat;
-    public Text motherText;
-    public GameObject friendChat;
-    public Text friendText;
-    public GameObject loverChat;
-    public Text loverText;
+    private GameObject playerChat;
+    private Text playerText;
+    private GameObject motherChat;
+    private Text motherText;
+    private GameObject friendChat;
+    private Text friendText;
+    private GameObject loverChat;
+    private Text loverText;
+    private Text dateText;
+
+    private Date date;
     
     // indexed by number of clicks
     public List<Dialogue> dialogues = new List<Dialogue>();
     public int currentStep;
+    public List<Sprite> newspapers = new List<Sprite>();
+    public SpriteRenderer bg;
+    public SpriteRenderer bbg;
     
+    // singleton
+    private static DialogueDisplay _instance;
+
+    public static DialogueDisplay Instance()
+    {
+        if (_instance == null)
+        {
+            GameObject dd = new GameObject();
+            dd.AddComponent<DialogueDisplay>();
+            _instance = dd.GetComponent<DialogueDisplay>();
+        }
+        return _instance;
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
+        playerChat = GameObject.Find("hero").transform.Find("Dialogue").gameObject;
+        playerText = playerChat.transform.Find("Panel/Text").GetComponent<Text>();
+        motherChat = GameObject.Find("mother").transform.Find("Dialogue").gameObject;
+        motherText = motherChat.transform.Find("Panel/Text").GetComponent<Text>();
+        loverChat = GameObject.Find("lover").transform.Find("Dialogue").gameObject;
+        loverText = loverChat.transform.Find("Panel/Text").GetComponent<Text>();
+        friendChat = GameObject.Find("friend").transform.Find("Dialogue").gameObject;
+        friendText = friendChat.transform.Find("Panel/Text").GetComponent<Text>();
+        dateText = GameObject.Find("DateText").GetComponent<Text>();
         currentStep = 0;
         playerChat.SetActive(false);
         motherChat.SetActive(false);
@@ -61,6 +129,9 @@ public class DialogueDisplay : MonoBehaviour
         dialogues.Add(new Dialogue(null, "孩子，你继续放心地去，去抓住它！", null, null));
         dialogues.Add(new Dialogue("终于就在我眼前了！", null, null, null));
         dialogues.Add(new Dialogue(null, "瞒了你这么久......", "兄弟，需要帮忙尽管跟我说。", "亲爱的，有个坏消息......"));
+        date = new Date(1990, 6);
+        dateText.text = date.getDate(currentStep);
+        bg.sprite = newspapers[currentStep];
     }
 
     void Update()
@@ -70,8 +141,36 @@ public class DialogueDisplay : MonoBehaviour
 
     public void NextStep()
     {
-        Display(dialogues[currentStep]);
         currentStep++;
+        if (currentStep >= dialogues.Count)
+        {
+            //TODO
+            Debug.Log("end of scene");
+        }
+        dateText.text = date.getDate(currentStep);
+        StartCoroutine(ChangeBackground());
+    }
+    
+    private IEnumerator ChangeBackground ()
+    {
+        float seconds = 0.8f;
+        float elapsedTime = 0;
+        bbg.sprite = bg.sprite;
+        bg.sprite = newspapers[currentStep];
+        while (elapsedTime < seconds)
+        {
+            float a = Mathf.Lerp(0, 1, (elapsedTime / seconds));
+            bg.color = new Color(1, 1, 1, a);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        bg.color = new Color(1, 1, 1, 1);
+    }
+
+    public void UpdateDialogue()
+    {
+        Display(dialogues[currentStep]);
     }
 
     public void Display(Dialogue dialogue)

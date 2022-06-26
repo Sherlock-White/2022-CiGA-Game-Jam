@@ -13,42 +13,28 @@ public enum DIRECTION
 
 public class Hero : MonoBehaviour
 {
-    //主角动画机
     private Animator playerAnimator;
-
-    //主角方向
     private DIRECTION _direction = DIRECTION.RIGHT_DOWN;
+    private Map map;
+    
+    private GameObject leftUp;
+    private GameObject leftDown;
+    private GameObject rightUp;
+    private GameObject rightDown;
+
+    private Canvas buttonCanvas;
 
     //当前主角所在坐标，从1到49，会比map中的数组索引大1
     private int curBoxId = 43;
 
     public GameObject mapObj;
 
-    //主角转向
-    public void ToLeftUp()
+    public float moveTime;
+
+    //主角移动
+    public void Move(DIRECTION dir)
     {
-        _direction = DIRECTION.LEFT_UP;
-        playerAnimator.Play(_direction.ToString());
-        MovePlayer();
-        UpdateDirBtn();
-    }
-    public void ToLeftDown()
-    {
-        _direction = DIRECTION.LEFT_DOWN;
-        playerAnimator.Play(_direction.ToString());
-        MovePlayer();
-        UpdateDirBtn();
-    }
-    public void ToRightUp()
-    {
-        _direction = DIRECTION.RIGHT_UP;
-        playerAnimator.Play(_direction.ToString());
-        MovePlayer();
-        UpdateDirBtn();
-    }
-    public void ToRightDown()
-    {
-        _direction = DIRECTION.RIGHT_DOWN;
+        _direction = dir;
         playerAnimator.Play(_direction.ToString());
         MovePlayer();
         UpdateDirBtn();
@@ -58,8 +44,6 @@ public class Hero : MonoBehaviour
     public void UpdatePlayerLayer()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        GameObject buttons = GameObject.Find("map/hero/Buttons");
-        Canvas canvas = buttons.GetComponent<Canvas>();
         int[] list = {4,10,11,13,14,18,23,24,25,31,36,38,48,49};
         bool isContained = false;
         foreach(var item in list)
@@ -73,12 +57,12 @@ public class Hero : MonoBehaviour
         if(isContained)
         {
             spriteRenderer.sortingLayerName = "foreground1";
-            canvas.sortingLayerName = "foreground1";
+            buttonCanvas.sortingLayerName = "foreground1";
         }
         else
         {
             spriteRenderer.sortingLayerName = "middleground";
-            canvas.sortingLayerName = "middleground";
+            buttonCanvas.sortingLayerName = "middleground";
         }
 
         if(curBoxId == 23)
@@ -90,12 +74,7 @@ public class Hero : MonoBehaviour
     //刷新方向键的显示,只有从地图的下一有效路径中获得的值为正才显示；否则隐藏
     public void UpdateDirBtn()
     {
-        Map map = mapObj.GetComponent<Map>();
         int[] validMove = map.FindValidMove(curBoxId);
-        GameObject leftUp = GameObject.Find("hero/Buttons/leftUp");
-        GameObject leftDown = GameObject.Find("hero/Buttons/leftDown");
-        GameObject rightUp = GameObject.Find("hero/Buttons/rightUp");
-        GameObject rightDown = GameObject.Find("hero/Buttons/rightDown");
         leftUp.SetActive(validMove[0] > 0);
         leftDown.SetActive(validMove[1] > 0);
         rightUp.SetActive(validMove[2] > 0);
@@ -121,12 +100,32 @@ public class Hero : MonoBehaviour
         float endY = box.GetComponent<Transform>().position.y;
         float offsetX = endX - startX;
         float offsetY = endY - startY;
-        gameObject.transform.Translate(new Vector3(offsetX, offsetY, 0));
+        StartCoroutine(MoveOverTime(new Vector3(offsetX, offsetY, 0), moveTime));
+    }
+    
+    private IEnumerator MoveOverTime (Vector3 offset, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startPos = transform.position;
+        while (elapsedTime < seconds)
+        {
+            gameObject.transform.position = startPos + Vector3.Lerp(Vector3.zero, offset, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        gameObject.transform.position = startPos + offset;
     }
 
     void Start()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
+        map = mapObj.GetComponent<Map>();
+        leftUp = GameObject.Find("hero/Buttons/leftUp");
+        leftDown = GameObject.Find("hero/Buttons/leftDown");
+        rightUp = GameObject.Find("hero/Buttons/rightUp");
+        rightDown = GameObject.Find("hero/Buttons/rightDown");
+        GameObject buttons = transform.Find("Buttons").gameObject;
+        buttonCanvas = buttons.GetComponent<Canvas>();
         UpdateDirBtn();
     }
 
