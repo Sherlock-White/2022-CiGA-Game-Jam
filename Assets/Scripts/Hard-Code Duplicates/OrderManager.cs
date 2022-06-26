@@ -26,7 +26,7 @@ public class OrderManager : MonoBehaviour
     public GameObject buttons;
     public GameObject startScene;
     public List<GameObject> scene;
-    
+
     private GameObject playerChat;
     private Text playerText;
     private GameObject motherChat;
@@ -54,7 +54,7 @@ public class OrderManager : MonoBehaviour
     {
         OnButtonClick(DIRECTION.RIGHT_DOWN);
     }
-    
+
     public void OnButtonClick(DIRECTION dir)
     {
         currentPhase = phase.MOVING;
@@ -126,7 +126,7 @@ public class OrderManager : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
 
     private void EnableButtons()
@@ -195,6 +195,9 @@ public class OrderManager : MonoBehaviour
             case 11:
                 playerChat.SetActive(true);
                 playerText.text = "我还年轻，妈。我有潜力！";
+                //场景音乐淡入
+                GameObject.FindWithTag("MainCamera").GetComponent<AudioSource>().Play();
+                GameObject.FindWithTag("MainCamera").GetComponent<MusicFade>().FadeIn();
                 break;
             default:
                 playerChat.SetActive(false);
