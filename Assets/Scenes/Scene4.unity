@@ -2729,6 +2729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapObj: {fileID: 803004327}
   moveTime: 0.4
+  sceneId: 4
 --- !u!1 &5415868011295073953
 GameObject:
   m_ObjectHideFlags: 0

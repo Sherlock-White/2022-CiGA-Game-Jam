@@ -32,6 +32,8 @@ public class Hero : MonoBehaviour
 
     public float moveTime;
 
+    public int sceneId;
+
     //主角移动
     public void Move(DIRECTION dir)
     {
@@ -66,17 +68,12 @@ public class Hero : MonoBehaviour
             spriteRenderer.sortingLayerName = "middleground";
             buttonCanvas.sortingLayerName = "middleground";
         }
-
-        if(curBoxId == 23)
-        {
-
-        }
     }
 
     //刷新方向键的显示,只有从地图的下一有效路径中获得的值为正才显示；否则隐藏
     public void UpdateDirBtn()
     {
-        int[] validMove = map.FindValidMove(curBoxId);
+        int[] validMove = map.FindValidMove(curBoxId,sceneId);
         leftUp.SetActive(validMove[0] > 0);
         leftDown.SetActive(validMove[1] > 0);
         rightUp.SetActive(validMove[2] > 0);
@@ -88,7 +85,7 @@ public class Hero : MonoBehaviour
     {
         //更新当前所在的CurBoxId
         Map map = mapObj.GetComponent<Map>();
-        int[] validMove = map.FindValidMove(curBoxId);
+        int[] validMove = map.FindValidMove(curBoxId,sceneId);
         curBoxId = validMove[(int)_direction];
 
         UpdatePlayerLayer();

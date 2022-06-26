@@ -89,7 +89,9 @@ public class OM3 : MonoBehaviour
             case phase.BACKGROUND:
                 if (elapsedTime > bgTime)
                 {
+
                     currentPhase = phase.DATE;
+                    DM3.Instance().UpdateDialogue();
                     elapsedTime = 0;
                 }
                 break;
