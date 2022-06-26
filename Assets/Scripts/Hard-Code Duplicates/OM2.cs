@@ -21,9 +21,8 @@ public class OM2 : MonoBehaviour
     private Button tl;
     private Button tr;
 
-    public GameObject buttons;
-    public GameObject startScene;
-    public List<GameObject> scene;
+    //public GameObject startScene;
+    //public List<GameObject> scene;
 
     private GameObject playerChat;
     private Text playerText;

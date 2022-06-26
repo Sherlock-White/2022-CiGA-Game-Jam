@@ -72,7 +72,7 @@ public class OrderManager : MonoBehaviour
         tr = GameObject.Find("hero/Buttons/rightUp").GetComponent<Button>();
         br = GameObject.Find("hero/Buttons/rightDown").GetComponent<Button>();
         buttons.SetActive(false);
-        startScene.SetActive(true);
+        startScene.SetActive(true);     //自执行NEXT()，是一个透明的按钮
         foreach (var s in scene)
         {
             s.SetActive(false);
