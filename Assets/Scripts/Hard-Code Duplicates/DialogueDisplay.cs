@@ -42,7 +42,7 @@ public class Dialogue
         this.playerTxt = playerTxt;
         this.motherTxt = motherTxt;
         this.friendTxt = friendTxt;
-        this.motherTxt = motherTxt;
+        this.loverTxt = loverTxt;
     }
 }
 
