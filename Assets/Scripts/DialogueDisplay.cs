@@ -63,6 +63,9 @@ public class DialogueDisplay : MonoBehaviour
     // indexed by number of clicks
     public List<Dialogue> dialogues = new List<Dialogue>();
     public int currentStep;
+    public List<Sprite> newspapers = new List<Sprite>();
+    public SpriteRenderer bg;
+    public SpriteRenderer bbg;
     
     // singleton
     private static DialogueDisplay _instance;
@@ -127,7 +130,8 @@ public class DialogueDisplay : MonoBehaviour
         dialogues.Add(new Dialogue("终于就在我眼前了！", null, null, null));
         dialogues.Add(new Dialogue(null, "瞒了你这么久......", "兄弟，需要帮忙尽管跟我说。", "亲爱的，有个坏消息......"));
         date = new Date(1990, 6);
-        SetDateText();
+        dateText.text = date.getDate(currentStep);
+        bg.sprite = newspapers[currentStep];
     }
 
     void Update()
@@ -143,14 +147,30 @@ public class DialogueDisplay : MonoBehaviour
             //TODO
             Debug.Log("end of scene");
         }
-        Display(dialogues[currentStep]);
-        SetDateText();
+        dateText.text = date.getDate(currentStep);
+        StartCoroutine(ChangeBackground());
+    }
+    
+    private IEnumerator ChangeBackground ()
+    {
+        float seconds = 0.8f;
+        float elapsedTime = 0;
+        bbg.sprite = bg.sprite;
+        bg.sprite = newspapers[currentStep];
+        while (elapsedTime < seconds)
+        {
+            float a = Mathf.Lerp(0, 1, (elapsedTime / seconds));
+            bg.color = new Color(1, 1, 1, a);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        bg.color = new Color(1, 1, 1, 1);
     }
 
-    public void SetDateText()
+    public void UpdateDialogue()
     {
-        Debug.Log(currentStep);
-        dateText.text = date.getDate(currentStep);
+        Display(dialogues[currentStep]);
     }
 
     public void Display(Dialogue dialogue)

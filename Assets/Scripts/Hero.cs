@@ -29,35 +29,15 @@ public class Hero : MonoBehaviour
 
     public GameObject mapObj;
 
-    //主角转向
-    public void ToLeftUp()
-    {
-        _direction = DIRECTION.LEFT_UP;
-        Move();
-    }
-    public void ToLeftDown()
-    {
-        _direction = DIRECTION.LEFT_DOWN;
-        Move();
-    }
-    public void ToRightUp()
-    {
-        _direction = DIRECTION.RIGHT_UP;
-        Move();
-    }
+    public float moveTime;
 
-    public void ToRightDown()
+    //主角移动
+    public void Move(DIRECTION dir)
     {
-        _direction = DIRECTION.RIGHT_DOWN;
-        Move();
-    }
-    
-    private void Move()
-    {
+        _direction = dir;
         playerAnimator.Play(_direction.ToString());
         MovePlayer();
         UpdateDirBtn();
-        DialogueDisplay.Instance().NextStep();
     }
 
     //刷新角色的图层，在middleground与foreg之间修改
@@ -120,7 +100,20 @@ public class Hero : MonoBehaviour
         float endY = box.GetComponent<Transform>().position.y;
         float offsetX = endX - startX;
         float offsetY = endY - startY;
-        gameObject.transform.Translate(new Vector3(offsetX, offsetY, 0));
+        StartCoroutine(MoveOverTime(new Vector3(offsetX, offsetY, 0), moveTime));
+    }
+    
+    private IEnumerator MoveOverTime (Vector3 offset, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startPos = transform.position;
+        while (elapsedTime < seconds)
+        {
+            gameObject.transform.position = startPos + Vector3.Lerp(Vector3.zero, offset, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        gameObject.transform.position = startPos + offset;
     }
 
     void Start()
