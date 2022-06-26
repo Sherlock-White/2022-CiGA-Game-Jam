@@ -1,6 +1,6 @@
 //using System;
 //using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 //using UnityEngine.LowLevel;
@@ -21,6 +21,10 @@ public class OM2 : MonoBehaviour
     private Button tl;
     private Button tr;
 
+    public GameObject buttons;
+    public GameObject startScene;
+    public List<GameObject> scene;
+
     private GameObject playerChat;
     private Text playerText;
     private GameObject motherChat;
@@ -33,19 +37,23 @@ public class OM2 : MonoBehaviour
     [SerializeField] private int steps;
     public void ToLeftUp()
     {
+        Debug.Log("left up");
         OnButtonClick(DIRECTION.LEFT_UP);
     }
     public void ToLeftDown()
     {
+        Debug.Log("left down");
         OnButtonClick(DIRECTION.LEFT_DOWN);
     }
     public void ToRightUp()
     {
+        Debug.Log("right up");
         OnButtonClick(DIRECTION.RIGHT_UP);
     }
 
     public void ToRightDown()
     {
+        Debug.Log("right down");
         OnButtonClick(DIRECTION.RIGHT_DOWN);
     }
     
@@ -66,6 +74,20 @@ public class OM2 : MonoBehaviour
         tr = GameObject.Find("hero/Buttons/rightUp").GetComponent<Button>();
         br = GameObject.Find("hero/Buttons/rightDown").GetComponent<Button>();
         playerChat = GameObject.Find("hero").transform.Find("Dialogue").gameObject;
+        //playerText = playerChat.transform.Find("Panel/Text").GetComponent<Text>();
+        //motherChat = GameObject.Find("mother").transform.Find("Dialogue").gameObject;
+        //motherText = motherChat.transform.Find("Panel/Text").GetComponent<Text>();
+        //loverChat = GameObject.Find("lover").transform.Find("Dialogue").gameObject;
+        //loverText = loverChat.transform.Find("Panel/Text").GetComponent<Text>();
+        //friendChat = GameObject.Find("friend").transform.Find("Dialogue").gameObject;
+        //friendText = friendChat.transform.Find("Panel/Text").GetComponent<Text>();
+        //playerChat.SetActive(false);
+        //motherChat.SetActive(false);
+        //loverChat.SetActive(false);
+        //friendChat.SetActive(false);
+        //motherChat.transform.parent.gameObject.SetActive(false);
+        //loverChat.transform.parent.gameObject.SetActive(false);
+        //friendChat.transform.parent.gameObject.SetActive(false);
         hhh = playerChat.transform.parent.gameObject.GetComponent<Hero>();
         hhh.Instantiate();
         hhh.UpdateDirBtn();
