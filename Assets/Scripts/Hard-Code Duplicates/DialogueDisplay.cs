@@ -23,9 +23,10 @@ public class Date
 
     public string getDate(int turn)
     {
+        
         int monthsPassed = monthOffset + turn * 6;
         int y = yearOffset + monthsPassed / 12;
-        int m = monthOffset + monthsPassed % 12;
+        int m = monthOffset + (monthsPassed - 6) % 12;
         return $"{y}.{m}";
     }
 }

@@ -48,7 +48,7 @@ public class OM3 : MonoBehaviour
     {
         OnButtonClick(DIRECTION.RIGHT_DOWN);
     }
-    
+
     public void OnButtonClick(DIRECTION dir)
     {
         currentPhase = phase.MOVING;
@@ -90,7 +90,6 @@ public class OM3 : MonoBehaviour
                 if (elapsedTime > bgTime)
                 {
                     currentPhase = phase.DATE;
-                    DM3.Instance().UpdateDialogue();
                     elapsedTime = 0;
                 }
                 break;
@@ -102,7 +101,7 @@ public class OM3 : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
 
     private void EnableButtons()
