@@ -42,7 +42,8 @@ public class DM2 : MonoBehaviour
     private GameObject daughterChat;
     private Text daughterText;
     private Text dateText;
-
+    [SerializeField] private AudioSource Music;
+    [SerializeField] private float volumeDelta;
     private Date date;
     
     // indexed by number of clicks
@@ -132,8 +133,20 @@ public class DM2 : MonoBehaviour
         currentStep++;
         if (currentStep >= dialogues.Count)
         {
-            //TODO
-            Debug.Log("end of scene");
+            //Õ£÷π“Ù¿÷
+            GameObject.FindWithTag("MainCamera").GetComponent<AudioSource>().Stop();
+            //π ’œ∞◊‘Î…˘
+            GameObject.Find("EffectManager").GetComponent<SoundEffectManager>().PlayNextEffect(1);
+            Music = GameObject.Find("EffectManager").GetComponent<AudioSource>();
+            float timedelta = 2 / Time.deltaTime;
+            if (timedelta > 0)
+                volumeDelta = (0.5f - Music.volume) / timedelta;
+            else
+            {
+                volumeDelta = (0.5f - Music.volume);
+            }
+            //‘ÿ»Îœ¬“ª∏ˆ≥°æ∞
+            GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadNextLevel();
         }
         dateText.text = date.getDate(currentStep);
         StartCoroutine(ChangeBackground());
