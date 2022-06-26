@@ -144,6 +144,9 @@ public class DialogueDisplay : MonoBehaviour
         currentStep++;
         if (currentStep >= dialogues.Count)
         {
+            //停止音乐
+            GameObject.FindWithTag("MainCamera").GetComponent<AudioSource>().Stop();
+            GameObject.Find("EffectManager").GetComponent<SoundEffectManager>().PlayNextEffect(1);
             //载入下一个场景
             GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadNextLevel();
         }
