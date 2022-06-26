@@ -637,7 +637,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f8426a0190f05149bb807ee780be134, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3a8a32a615a944f70bbd1ad2b35fb106, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -768,6 +768,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 31df59a9db800c348b950ad6651c93ac, type: 2}
+    - target: {fileID: 8489371596760336310, guid: 54f6e1a454a93534d8798e61b59ee00f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8489371597224734657, guid: 54f6e1a454a93534d8798e61b59ee00f, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -1918,6 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapObj: {fileID: 2140893744}
+  moveTime: 0
 --- !u!95 &1511894530
 Animator:
   serializedVersion: 3
@@ -1985,7 +1990,7 @@ SpriteRenderer:
   m_Size: {x: 3.5, y: 3.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1552641659

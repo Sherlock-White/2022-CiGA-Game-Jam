@@ -144,8 +144,8 @@ public class DialogueDisplay : MonoBehaviour
         currentStep++;
         if (currentStep >= dialogues.Count)
         {
-            //TODO
-            Debug.Log("end of scene");
+            //载入下一个场景
+            GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadNextLevel();
         }
         dateText.text = date.getDate(currentStep);
         StartCoroutine(ChangeBackground());

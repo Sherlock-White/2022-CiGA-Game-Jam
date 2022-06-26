@@ -1503,7 +1503,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e868ac88bee993e4ea2ec2655638900e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8fad47985a02149c2b420197de4e26b1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -2912,6 +2912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapObj: {fileID: 1171020622}
+  moveTime: 0
 --- !u!95 &2060334696
 Animator:
   serializedVersion: 3
@@ -2979,7 +2980,7 @@ SpriteRenderer:
   m_Size: {x: 3.5, y: 3.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2067903468
