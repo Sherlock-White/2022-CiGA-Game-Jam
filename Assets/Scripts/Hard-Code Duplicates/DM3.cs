@@ -31,8 +31,8 @@ public class DM3 : MonoBehaviour
 {
     private GameObject playerChat;
     private Text playerText;
-    private GameObject daugnterChat;
-    private Text daugnterText;
+    private GameObject daughterChat;
+    private Text daughterText;
     private GameObject friendChat;
     private Text friendText;
     private GameObject loverChat;
@@ -78,8 +78,8 @@ public class DM3 : MonoBehaviour
     {
         playerChat = GameObject.Find("hero").transform.Find("Dialogue").gameObject;
         playerText = playerChat.transform.Find("Panel/Text").GetComponent<Text>();
-        daugnterChat = GameObject.Find("mother").transform.Find("Dialogue").gameObject;
-        daugnterText = daugnterChat.transform.Find("Panel/Text").GetComponent<Text>();
+        daughterChat = GameObject.Find("daughter").transform.Find("Dialogue").gameObject;
+        daughterText = daughterChat.transform.Find("Panel/Text").GetComponent<Text>();
         loverChat = GameObject.Find("lover").transform.Find("Dialogue").gameObject;
         loverText = loverChat.transform.Find("Panel/Text").GetComponent<Text>();
         friendChat = GameObject.Find("friend").transform.Find("Dialogue").gameObject;
@@ -87,7 +87,7 @@ public class DM3 : MonoBehaviour
         dateText = GameObject.Find("DateText").GetComponent<Text>();
         currentStep = 0;
         playerChat.SetActive(false);
-        daugnterChat.SetActive(false);
+        daughterChat.SetActive(false);
         friendChat.SetActive(false);
         loverChat.SetActive(false);
         dialogues.Add(new D3("我到底该往哪里走？前进？后退？", null, null, null));
@@ -162,11 +162,11 @@ public class DM3 : MonoBehaviour
             playerChat.SetActive(true);
             playerText.text = dialogue.playerTxt;
         }
-        daugnterChat.SetActive(false);
+        daughterChat.SetActive(false);
         if (dialogue.daughterTxt != null)
         {
-            daugnterChat.SetActive(true);
-            daugnterText.text = dialogue.daughterTxt;
+            daughterChat.SetActive(true);
+            daughterText.text = dialogue.daughterTxt;
         }
         friendChat.SetActive(false);
         if (dialogue.friendTxt != null)
