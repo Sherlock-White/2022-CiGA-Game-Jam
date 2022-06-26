@@ -163,10 +163,10 @@ public class DM3 : MonoBehaviour
             playerText.text = dialogue.playerTxt;
         }
         daugnterChat.SetActive(false);
-        if (dialogue.motherTxt != null)
+        if (dialogue.daughterTxt != null)
         {
             daugnterChat.SetActive(true);
-            daugnterText.text = dialogue.motherTxt;
+            daugnterText.text = dialogue.daughterTxt;
         }
         friendChat.SetActive(false);
         if (dialogue.friendTxt != null)
