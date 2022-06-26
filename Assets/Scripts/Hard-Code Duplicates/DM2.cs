@@ -96,6 +96,7 @@ public class DM2 : MonoBehaviour
         motherChat.SetActive(false);
         friendChat.SetActive(false);
         loverChat.SetActive(false);
+        daughterChat.SetActive(false);
         dialogues.Add(new D2(null, "孩子，没关系，重头再来，也未尝见不到新的风景。", "看病把钱都花光了？跟兄弟客气什么，我给你！你放心走！", "你知道的，我和妈都一直在你身后.....", null));
         dialogues.Add(new D2(null, null, null, null, null));
         dialogues.Add(new D2(null, "好事，好事啊。哎，人老了就是容易落泪。", null, "老公，你要当爸爸了......", null));
