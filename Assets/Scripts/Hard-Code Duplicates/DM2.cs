@@ -24,7 +24,7 @@ public class D2
         this.playerTxt = playerTxt;
         this.motherTxt = motherTxt;
         this.friendTxt = friendTxt;
-        this.motherTxt = motherTxt;
+        this.loverTxt = loverTxt;
         this.daughterTxt = daughterTxt;
     }
 }
@@ -39,8 +39,8 @@ public class DM2 : MonoBehaviour
     private Text friendText;
     private GameObject loverChat;
     private Text loverText;
-    private GameObject daugnterChat;
-    private Text dauchterText;
+    private GameObject daughterChat;
+    private Text daughterText;
     private Text dateText;
 
     private Date date;
@@ -88,8 +88,8 @@ public class DM2 : MonoBehaviour
         loverText = loverChat.transform.Find("Panel/Text").GetComponent<Text>();
         friendChat = GameObject.Find("friend").transform.Find("Dialogue").gameObject;
         friendText = friendChat.transform.Find("Panel/Text").GetComponent<Text>();
-        daugnterChat = GameObject.Find("daughter").transform.Find("Dialogue").gameObject;
-        dauchterText = dauchterText.transform.Find("Panel/Text").GetComponent<Text>();
+        daughterChat = GameObject.Find("daughter").transform.Find("Dialogue").gameObject;
+        daughterText = daughterChat.transform.Find("Panel/Text").GetComponent<Text>();
         dateText = GameObject.Find("DateText").GetComponent<Text>();
         currentStep = 0;
         playerChat.SetActive(false);
@@ -186,11 +186,11 @@ public class DM2 : MonoBehaviour
             loverChat.SetActive(true);
             loverText.text = dialogue.loverTxt;
         }
-        daugnterChat.SetActive(false);
+        daughterChat.SetActive(false);
         if (dialogue.daughterTxt != null)
         {
-            daugnterChat.SetActive(true);
-            dauchterText.text = dialogue.daughterTxt;
+            daughterChat.SetActive(true);
+            daughterText.text = dialogue.daughterTxt;
         }
     }
 }
