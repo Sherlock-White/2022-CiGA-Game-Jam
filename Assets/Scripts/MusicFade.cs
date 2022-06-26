@@ -28,7 +28,7 @@ public class MusicFade : MonoBehaviour
         if (Math.Abs(Music.volume - targetvolume) >= Math.Abs(volumeDelta))
         {
             Music.volume += (float)volumeDelta;
-            Debug.Log("fading...");
+            //Debug.Log("fading...");
         }
         else
         {
@@ -38,7 +38,7 @@ public class MusicFade : MonoBehaviour
     }
     public void FadeMusic(float targetVolume/*0-1*/, float durtime/*seconds*/)
     {
-        Debug.Log("Music fade set target = " + targetVolume);
+        //Debug.Log("Music fade set target = " + targetVolume);
         targetvolume = targetVolume;
         if (Music == null) Music = GetComponent<AudioSource>();
         float timedelta = durtime / Time.deltaTime;

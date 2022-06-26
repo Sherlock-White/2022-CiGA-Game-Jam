@@ -57,7 +57,8 @@ public class DialogueDisplay : MonoBehaviour
     private GameObject loverChat;
     private Text loverText;
     private Text dateText;
-
+    [SerializeField] private AudioSource Music;
+    [SerializeField] private float volumeDelta;
     private Date date;
     
     // indexed by number of clicks
@@ -146,7 +147,16 @@ public class DialogueDisplay : MonoBehaviour
         {
             //停止音乐
             GameObject.FindWithTag("MainCamera").GetComponent<AudioSource>().Stop();
+            //故障白噪声
             GameObject.Find("EffectManager").GetComponent<SoundEffectManager>().PlayNextEffect(1);
+            Music = GameObject.Find("EffectManager").GetComponent<AudioSource>();
+            float timedelta = 2 / Time.deltaTime;
+            if (timedelta > 0)
+                volumeDelta = (0.5f - Music.volume) / timedelta;
+            else
+            {
+                volumeDelta = (0.5f - Music.volume);
+            }
             //载入下一个场景
             GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadNextLevel();
         }

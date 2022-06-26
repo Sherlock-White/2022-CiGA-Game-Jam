@@ -770,7 +770,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ce085349c0e84abc918077d3511c23b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.31
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1342,6 +1342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fea51ebf2074214a01c576e2a959a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Music: {fileID: 0}
+  volumeDelta: 0
   currentStep: 0
   newspapers:
   - {fileID: 21300000, guid: e133c4f1606e84f5cac7403f5f8734bb, type: 3}
@@ -4702,7 +4704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8489371596556976315, guid: 54f6e1a454a93534d8798e61b59ee00f, type: 3}
       propertyPath: m_Alpha
-      value: 0.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8489371596760336308, guid: 54f6e1a454a93534d8798e61b59ee00f, type: 3}
       propertyPath: m_AnchoredPosition.x
