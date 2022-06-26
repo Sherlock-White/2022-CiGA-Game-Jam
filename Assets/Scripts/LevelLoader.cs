@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 0f;
 
     // Update is called once per frame
     void Update()
@@ -17,20 +17,20 @@ public class LevelLoader : MonoBehaviour
             LoadNextLevel();
         }
     }
-    
+
     public void LoadNextLevel()
     {
-        //Ð­³Ì·½Ê½
+        //Ð­ï¿½Ì·ï¿½Ê½
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        //²¥·Å×ª³¡¶¯»­
+        //ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         transition.SetTrigger("Start");
-        //ÑÓ³ÙÔØÈë³¡¾°·ÀÖ¹¸²¸Ç
+        //ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ë³¡ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(transitionTime);
-        //ÔØÈë³¡¾°
+        //ï¿½ï¿½ï¿½ë³¡ï¿½ï¿½
         SceneManager.LoadScene(levelIndex);
 
     }
