@@ -35,6 +35,7 @@ public class OrderManager : MonoBehaviour
     private Text loverText;
     private GameObject friendChat;
     private Text friendText;
+    private Hero hhh;
     [SerializeField] private int steps;
     public void ToLeftUp()
     {
@@ -51,7 +52,6 @@ public class OrderManager : MonoBehaviour
 
     public void ToRightDown()
     {
-        Debug.Log("aaaaa");
         OnButtonClick(DIRECTION.RIGHT_DOWN);
     }
     
@@ -197,6 +197,7 @@ public class OrderManager : MonoBehaviour
                 playerText.text = "我还年轻，妈。我有潜力！";
                 break;
             default:
+                playerChat.SetActive(false);
                 buttons.SetActive(true);
                 startScene.SetActive(false);
                 foreach (var s in scene)
@@ -204,7 +205,9 @@ public class OrderManager : MonoBehaviour
                     s.SetActive(true);
                 }
 
-                playerChat.transform.parent.gameObject.GetComponent<Hero>().UpdateDirBtn();
+                hhh = playerChat.transform.parent.gameObject.GetComponent<Hero>();
+                hhh.Instantiate();
+                hhh.UpdateDirBtn();
                 break;
         }
 

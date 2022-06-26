@@ -116,7 +116,7 @@ public class Hero : MonoBehaviour
         gameObject.transform.position = startPos + offset;
     }
 
-    void Start()
+    public void Instantiate()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
         map = mapObj.GetComponent<Map>();
