@@ -126,7 +126,6 @@ public class Hero : MonoBehaviour
         rightDown = GameObject.Find("hero/Buttons/rightDown");
         GameObject buttons = transform.Find("Buttons").gameObject;
         buttonCanvas = buttons.GetComponent<Canvas>();
-        UpdateDirBtn();
     }
 
     // Update is called once per frame
