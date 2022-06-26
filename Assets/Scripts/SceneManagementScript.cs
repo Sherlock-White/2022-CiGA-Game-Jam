@@ -9,4 +9,14 @@ public class SceneManagementScript: MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+    
+    public static void ToCredit()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    
+    public static void ToTitle()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
 }

@@ -13,7 +13,7 @@ public class CustomImage : Image
         {
             if (_polygon == null)
                 _polygon = GetComponent<PolygonCollider2D>();
-
+            
             return _polygon;
         }
     }
