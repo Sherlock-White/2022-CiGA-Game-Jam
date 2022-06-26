@@ -23,6 +23,7 @@ public class Hero : MonoBehaviour
     private GameObject rightDown;
 
     private Canvas buttonCanvas;
+    private SoundEffectManager soundEffectManager;
 
     //当前主角所在坐标，从1到49，会比map中的数组索引大1
     private int curBoxId = 43;
@@ -34,6 +35,7 @@ public class Hero : MonoBehaviour
     //主角移动
     public void Move(DIRECTION dir)
     {
+        soundEffectManager.PlayEffect(3);
         _direction = dir;
         playerAnimator.Play(_direction.ToString());
         MovePlayer();
@@ -116,10 +118,12 @@ public class Hero : MonoBehaviour
         gameObject.transform.position = startPos + offset;
     }
 
-    void Start()
+    public void Instantiate()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
         map = mapObj.GetComponent<Map>();
+        GameObject soundObj = GameObject.Find("EffectManager");
+        soundEffectManager = soundObj.GetComponent<SoundEffectManager>();
         leftUp = GameObject.Find("hero/Buttons/leftUp");
         leftDown = GameObject.Find("hero/Buttons/leftDown");
         rightUp = GameObject.Find("hero/Buttons/rightUp");
