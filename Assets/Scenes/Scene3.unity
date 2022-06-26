@@ -4826,8 +4826,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
+      - m_Target: {fileID: 1358913857}
+        m_TargetAssemblyTypeName: OM3, Assembly-CSharp
         m_MethodName: ToRightUp
         m_Mode: 1
         m_Arguments:
@@ -5038,9 +5038,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
-        m_MethodName: ToLeftDown
+      - m_Target: {fileID: 1358913857}
+        m_TargetAssemblyTypeName: OM3, Assembly-CSharp
+        m_MethodName: ToLeftUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5163,8 +5163,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
+      - m_Target: {fileID: 1358913857}
+        m_TargetAssemblyTypeName: OM3, Assembly-CSharp
         m_MethodName: ToRightDown
         m_Mode: 1
         m_Arguments:
@@ -5468,8 +5468,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
+      - m_Target: {fileID: 1358913857}
+        m_TargetAssemblyTypeName: OM3, Assembly-CSharp
         m_MethodName: ToLeftDown
         m_Mode: 1
         m_Arguments:
