@@ -22,7 +22,6 @@ public class Hero : MonoBehaviour
     private GameObject rightUp;
     private GameObject rightDown;
 
-    private Canvas buttonCanvas;
     private SoundEffectManager soundEffectManager;
 
     //当前主角所在坐标，从1到49，会比map中的数组索引大1
@@ -44,29 +43,67 @@ public class Hero : MonoBehaviour
         UpdateDirBtn();
     }
 
-    //刷新角色的图层，在middleground与foreg之间修改
+    //刷新角色的图层，需要被遮挡时，刷新到middleground,5即可；其他时间刷新到foreground,0即可
     public void UpdatePlayerLayer()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        int[] list = {4,10,11,13,14,18,23,24,25,31,36,38,48,49};
+        int[] list;
         bool isContained = false;
-        foreach(var item in list)
+        switch (sceneId)
         {
-            if(item == curBoxId)
-            {
-                isContained = true;
+            case 1:
+                list = new int[]{2,3,5,8,10,15,23,31,41};
+                foreach (var item in list)
+                {
+                    if (item == curBoxId)
+                    {
+                        isContained = true;
+                        break;
+                    }
+                }
                 break;
-            }
+            case 2:
+                list = new int[] { 1, 5, 8,9, 10, 15,21,25,26, 29,34 };
+                foreach (var item in list)
+                {
+                    if (item == curBoxId)
+                    {
+                        isContained = true;
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                list = new int[] { 1,2, 5, 8, 9, 10, 15,18,19, 24, 25, 26, 29, 34 };
+                foreach (var item in list)
+                {
+                    if (item == curBoxId)
+                    {
+                        isContained = true;
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                break;
+            default:
+                Debug.Log("invalid sceneId input");
+                break;
         }
         if(isContained)
         {
-            spriteRenderer.sortingLayerName = "foreground1";
-            buttonCanvas.sortingLayerName = "foreground1";
+            spriteRenderer.sortingLayerName = "middleground";
+            spriteRenderer.sortingOrder = 5;
+            if((sceneId == 1 && curBoxId == 10) || (sceneId == 2 && curBoxId == 25)
+                || (sceneId == 3 && (curBoxId == 24 || curBoxId == 25 || curBoxId == 18)))
+            {
+                spriteRenderer.sortingOrder = 15;
+            }
         }
         else
         {
-            spriteRenderer.sortingLayerName = "middleground";
-            buttonCanvas.sortingLayerName = "middleground";
+            spriteRenderer.sortingLayerName = "foreground";
+            spriteRenderer.sortingOrder = 0;
         }
     }
 
@@ -125,13 +162,5 @@ public class Hero : MonoBehaviour
         leftDown = GameObject.Find("hero/Buttons/leftDown");
         rightUp = GameObject.Find("hero/Buttons/rightUp");
         rightDown = GameObject.Find("hero/Buttons/rightDown");
-        GameObject buttons = transform.Find("Buttons").gameObject;
-        buttonCanvas = buttons.GetComponent<Canvas>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
